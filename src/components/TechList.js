@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import TechItem from './TechItem';
 
 class TecheList extends Component {
   state = {
@@ -8,7 +9,7 @@ class TecheList extends Component {
 
   handleInputChange = e =>{
     this.setState({ newTech: e.target.value });
-  }
+  };
   
   handleSubmit = e =>{
     e.preventDefault();
@@ -17,15 +18,13 @@ class TecheList extends Component {
       techs: [...this.state.techs, this.state.newTech],
       newTech:''
     });
-  }
+  };
 
   handleDelete = (tech) =>{
-    console.log(tech)
-
     this.setState({
       techs: this.state.techs.filter(t => t !== tech)
-    })
-  }
+    });
+  };
 
   render(){
 
@@ -34,10 +33,11 @@ class TecheList extends Component {
       <h1>{this.state.newTech}</h1>
       <ul>
         {this.state.techs.map(tech => (
-        <li key={tech}>
-          {tech}
-          <button type="button" onClick={() => this.handleDelete(tech)}>Remover</button>
-        </li>
+          <TechItem
+           key={tech}
+           tech={tech} 
+           onDelete={() => this.handleDelete(tech)} 
+          /> 
         ))}
       </ul>
       <input 
@@ -53,3 +53,5 @@ class TecheList extends Component {
 }
 
 export default TecheList;
+
+ 
