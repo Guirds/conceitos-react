@@ -1,4 +1,5 @@
 import React from 'react';
+import ProTypes from 'prop-types';
 
 function TechItem({tech, onDelete}) {
   return(
@@ -9,4 +10,13 @@ function TechItem({tech, onDelete}) {
   );
 };
 
-export default TechItem;
+TechItem.defaultProps = {
+  tech: 'Oculto',
+};
+
+TechItem.ProTypes = {
+  tech: ProTypes.string,
+  onDelete: ProTypes.func.isRequired,
+};
+
+export default TechItem;ProTypes
